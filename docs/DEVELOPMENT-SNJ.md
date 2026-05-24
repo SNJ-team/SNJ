@@ -33,38 +33,50 @@ Java Runtime / Bukkit API
 ## Project Structure Example
 ```
 SNJ/
-├── libs/
-│   └── swift-java/                          # Cloned swift-java repository
+├── libs
+│   └── swift-java/                        # swift-java repository clone
 │
-├── Projects/
-│   └── SwiftPlugin/
-│       ├── Package.swift                    # Swift package configuration
+├── Projects
+│   └── YourPluginName/
+│       ├── Package.swift
 │       │
-│       ├── Sources/
-│       │   └── SwiftPlugin/
-│       │       ├── PaperAPI/                # Generated Java wrappers and swift-java config
-│       │       ├── Plugin.swift             # Main Swift plugin logic
-│       │       └── SwiftPluginModule+SwiftJava.swift
-│       │                                    # Generated Swift - Java JNI bridge
+│       ├── Sources
+│       │   ├── PaperAPI
+│       │   │   ├── Runtime.swift          # Generated Java wrappers
+│       │   │   └── swift-java.config      # Classes to wrap
+│       │   │
+│       │   └── YourPluginName
+│       │       ├── YourPluginName.swift   # Main Swift plugin logic
+│       │       └── generated
+│       │           └── YourPluginNameModule+SwiftJava.swift
+│       │                                       # Generated Swift - Java JNI bridge
 │       │
-│       └── java/
-│           ├── build.gradle.kts             # Java/Gradle build configuration
-│           │
-│           ├── generated/
-│           │   ├── java/com/example/swiftplugin/
-│           │   │   └── SwiftPlugin.java     # Generated Java bindings for Swift functions
-│           │   │
-│           │   └── swift/
-│           │       └── SwiftPluginModule+SwiftJava.swift
-│           │                                # Generated Swift JNI bridge sources
-│           │
-│           └── src/main/
-│               ├── java/com/example/swiftplugin/
-│               │   ├── Main.java            # Main Paper plugin class
-│               │   └── SwiftFunc.java       # Java command using Swift functions
-│               │
-│               └── resources/
-│                   └── plugin.yml           # Bukkit plugin configuration
+│       ├── java
+│       │   ├── build.gradle.kts
+│       │   │
+│       │   ├── generated
+│       │   │   └── java/com/snj
+│       │   │       └── YourPluginName.java
+│       │   │                               # Generated Java bindings
+│       │   │
+│       │   └── src/main
+│       │       ├── java/com/yourpackage
+│       │       │   ├── Main.java
+│       │       │   └── SwiftCommand.java
+│       │       │
+│       │       └── resources
+│       │           └── plugin.yml
+│       │
+│       ├── dist
+│       │   ├── YourPluginName.jar
+│       │   └── swiftlibs
+│       │       ├── libSwiftJava.dylib
+│       │       ├── libSwiftRuntimeFunctions.dylib
+│       │       └── libYourPluginName.dylib
+│       │
+│       ├── wrap-java.sh                   # Generates Swift wrappers
+│       ├── jextract.sh                    # Generates JNI bridge bindings
+│       └── build.sh                       # Build & deploy pipeline
 ```
 
 ## Getting started
@@ -577,7 +589,7 @@ Deploying...
 Done!
 ```
 
-- **CONGRATULATIONS!** you just created your firts minecraft using Swift and SNJ method
+- **CONGRATULATIONS!** you just created your first minecraft plugin using Swift and SNJ method
 now let's test it!!
 
 ```zsh
