@@ -33,29 +33,38 @@ Java Runtime / Bukkit API
 ## Project Structure Example
 ```
 SNJ/
-	libs/
-    ├── swift-java/								# From swift-java github
-    Projects/
-		SwiftPlugin/
-		├── Package.swift                          	# Swift package config
-		├── Sources/SwiftPlugin/
-    	│   ├── PaperAPI/							# ...
-		│   ├── Plugin.swift                       	# Swift Code
-		│   └── SwiftPluginModule+SwiftJava.swift  	# Generated jextract Swift Java bridge
-		│
-		└── java/
-    		├── build.gradle.kts                   	# Gradle config for java 
-    		├── generated/
-    		│   ├── java/com/example/swiftplugin/
-    		│   │   └── SwiftPlugin.java           	# Generated jextract – Java wrap
-    		│   └── swift/
-    		│       └── SwiftPluginModule+SwiftJava.swift  # ...
-    		└── src/main/
-	        	├── java/com/example/swiftplugin/
-    	    	│   ├── Main.java					# Main java class (extends JavaPlugin)
-        		│   └── SwiftFunc.java          	# Java using swift functions
-        		└── resources/
-            		└── plugin.yml                 	# ...
+├── libs/
+│   └── swift-java/                          # Cloned swift-java repository
+│
+├── Projects/
+│   └── SwiftPlugin/
+│       ├── Package.swift                    # Swift package configuration
+│       │
+│       ├── Sources/
+│       │   └── SwiftPlugin/
+│       │       ├── PaperAPI/                # Generated Java wrappers and swift-java config
+│       │       ├── Plugin.swift             # Main Swift plugin logic
+│       │       └── SwiftPluginModule+SwiftJava.swift
+│       │                                    # Generated Swift - Java JNI bridge
+│       │
+│       └── java/
+│           ├── build.gradle.kts             # Java/Gradle build configuration
+│           │
+│           ├── generated/
+│           │   ├── java/com/example/swiftplugin/
+│           │   │   └── SwiftPlugin.java     # Generated Java bindings for Swift functions
+│           │   │
+│           │   └── swift/
+│           │       └── SwiftPluginModule+SwiftJava.swift
+│           │                                # Generated Swift JNI bridge sources
+│           │
+│           └── src/main/
+│               ├── java/com/example/swiftplugin/
+│               │   ├── Main.java            # Main Paper plugin class
+│               │   └── SwiftFunc.java       # Java command using Swift functions
+│               │
+│               └── resources/
+│                   └── plugin.yml           # Bukkit plugin configuration
 ```
 
 ## Getting started
