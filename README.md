@@ -13,6 +13,7 @@ Experimental / Apple Silicon tested
 
 ## Example Projects
 - SNJShop
+- SNJschizoweb
 
 ## Documentation
 docs/DEVELOPMENT-SNJ.md
